@@ -1043,6 +1043,11 @@ static void dump_digest_info(void)
 #define DEVCRYPTO_CMD_DIGESTS (ENGINE_CMD_BASE + 2)
 #define DEVCRYPTO_CMD_DUMP_INFO (ENGINE_CMD_BASE + 3)
 
+#ifndef OPENSSL_MSTR
+# define OPENSSL_MSTR_HELPER(x) #x
+# define OPENSSL_MSTR(x) OPENSSL_MSTR_HELPER(x)
+#endif
+
 static const ENGINE_CMD_DEFN devcrypto_cmds[] = {
 #ifdef CIOCGSESSINFO
    {DEVCRYPTO_CMD_USE_SOFTDRIVERS,
